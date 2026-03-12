@@ -40,6 +40,7 @@ for (int i = 0; i < 30; i++) {
 
 
 void Program::Update() {
+    if(score >= extraLifeScore){if(lives < maxLives){lives++;} extraLifeScore += 1000;}
     for (Animation& a : Animation::animations) a.update();
     for (int i = 0; i < Animation::animations.size(); i++) {
         if (Animation::animations[i].done) Animation::animations.erase(Animation::animations.begin() + i);
@@ -87,6 +88,7 @@ void Program::Draw() {
     for (Animation& a : Animation::animations) a.draw();
 
     DrawText(TextFormat("Score: %i", score), 10, 10, 24, WHITE);
+    DrawText(TextFormat("Lives: %i", lives), 10, 40, 24, WHITE);
 
     for (int i = 0; i < lives; i++) {
          DrawTexturePro(ImageManager::SpriteSheet, Rectangle{0, 0, 17, 18}, 
@@ -199,6 +201,7 @@ void Program::PlayerReset() {
 void Program::Reset() {
     Enemy::enemies.clear();
     score = 0;
+    extraLifeScore = 1000;
     StdEnemy::attackInProgress = false;
     player = new Player((GetScreenWidth() / 2) - 15, GetScreenHeight() * 0.75f);
     respawnCooldown = 1080;
