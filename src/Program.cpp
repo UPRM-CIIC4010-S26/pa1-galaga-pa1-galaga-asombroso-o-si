@@ -106,11 +106,15 @@ void Program::Draw() {
 }
 
 void Program::ManageEnemyRespawns() {
+
+    int minRespawnCooldown = 300;
+    baseRespawnCooldown = std::max(1080 - score / 500, minRespawnCooldown);
+    
     delay = std::max(delay - 1, 0);
 
-    respawnCooldown -= 1;
+    respawnCooldown = std::max(respawnCooldown - 1, 0);
     if (respawnCooldown <= 0) {
-        respawnCooldown = 1080;
+        respawnCooldown = baseRespawnCooldown;
         for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) {
             if (!p.second && p.first.second != 150) {
                 int eType = GetRandomValue(1, 3);
