@@ -4,7 +4,7 @@
 #include "ImageManager.hpp"
 #include "Animation.hpp"
 #include <iostream>
-
+#include "SoundManager.hpp"
 class Enemy {
     protected:
         float angle = 90;
@@ -55,6 +55,8 @@ class Enemy {
                         if (p2.ID != 1 && HitBox::Collision(p.second->hitBox, p2.getHitBox())) {
                             p.second->health--;
                             p2.del = true;
+                             if (p.second->health > 0) {PlaySound(SoundManager::hit);} 
+                             else { PlaySound(SoundManager::dead); }
                         }
                     }
 
