@@ -1,4 +1,5 @@
 #include "Program.hpp"
+#include "SoundManager.hpp"
 
 Program::Program() {
 
@@ -40,6 +41,12 @@ for (int i = 0; i < 30; i++) {
 
 
 void Program::Update() {
+
+   UpdateMusicStream(SoundManager::menuMusic);
+
+    if (startup) {if(!IsMusicStreamPlaying(SoundManager::menuMusic)) {PlayMusicStream(SoundManager::menuMusic);}} 
+    else{if(IsMusicStreamPlaying(SoundManager::menuMusic)) {StopMusicStream(SoundManager::menuMusic);}}
+
     if(score >= extraLifeScore){if(lives < maxLives){lives++;} extraLifeScore += 1000;}
     for (Animation& a : Animation::animations) a.update();
     for (int i = 0; i < Animation::animations.size(); i++) {
@@ -155,7 +162,10 @@ void Program::ManageEnemyRespawns() {
 void Program::DrawStartup() {
     DrawRectangle(0, 0, (float)GetScreenWidth(), (float)GetScreenHeight(), Color{0, 0, 0, 125});
     DrawText("Galaga", (GetScreenWidth() / 2 - 237), 75, 144, WHITE);
+    DrawText("2", GetScreenWidth() / 2 - MeasureText("2", 100) / 2, 220, 150, BLUE);
+    
     DrawText("Press Enter", (GetScreenWidth() / 2) - 75, GetScreenHeight() / 2, 24, GRAY);
+    DrawText("Like Galaga but with a 2 or smth...", GetScreenWidth() / 2 - MeasureText("Like Galaga but with a 2 or smth...", 12) / 2, GetScreenHeight() / 2 + 80, 12,DARKGRAY);
 }
 
 void Program::DrawPauseScreen() {
