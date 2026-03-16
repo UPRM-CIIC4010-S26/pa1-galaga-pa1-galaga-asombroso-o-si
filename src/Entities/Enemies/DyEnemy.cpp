@@ -32,7 +32,7 @@ void DyEnemy::update(std::pair<float, float> pos, HitBox target) {
 
     if (this->cooldown <= 0) {
         Projectile::projectiles.push_back(Projectile(Projectile(position.first + 15, position.second, 1)));
-        PlaySound(SoundManager::shoot);
+        PlaySound(SoundManager::enemyFighters);
         this->cooldown = GetRandomValue(90, 300);
     }
 }

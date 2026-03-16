@@ -6,50 +6,57 @@ void StdEnemy::draw() {
         case 1:
             if (!frame) {
                 if (this->health > 1) {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{2, 75, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
+                    DrawTexturePro(ImageManager::TieFighter,
+                            Rectangle{0, 0, (float)ImageManager::TieFighter.width, (float)ImageManager::TieFighter.height},
+                            Rectangle{this->position.first, this->position.second, 48, 48},
+                            Vector2{0, 0}, 0,WHITE);
                 } else {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{107, 75, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
+                    DrawTexturePro(ImageManager::TieFighterDamaged,
+                        Rectangle{0, 0, (float)ImageManager::TieFighterDamaged.width, (float)ImageManager::TieFighterDamaged.height},
+                        Rectangle{this->position.first, this->position.second, 48, 48},
+                        Vector2{0, 0}, 0, WHITE);
                 }
             } else {
                 if (this->health > 1) {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{20, 75, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
+                   DrawTexturePro(ImageManager::TieFighter,
+                            Rectangle{0, 0, (float)ImageManager::TieFighter.width, (float)ImageManager::TieFighter.height},
+                            Rectangle{this->position.first, this->position.second, 48, 48},
+                            Vector2{0, 0}, 0,WHITE);
                 } else {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{125, 75, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
-                }
+                    DrawTexturePro(ImageManager::TieFighterDestroyed,
+                            Rectangle{0, 0, (float)ImageManager::TieFighterDestroyed.width, (float)ImageManager::TieFighterDestroyed.height},
+                            Rectangle{this->position.first, this->position.second, 48, 48},
+                            Vector2{0, 0}, 0, WHITE);
             }
             break;
 
         case 2:
             if (!frame) {
                 if (this->health > 1) {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{2, 93, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
+                   DrawTexturePro(ImageManager::TieInterceptor,
+                            Rectangle{0, 0, (float)ImageManager::TieInterceptor.width, (float)ImageManager::TieInterceptor.height},
+                            Rectangle{this->position.first, this->position.second, 48, 48},
+                            Vector2{0, 0}, 0,WHITE);
                 } else {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{107, 93, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
+                        DrawTexturePro(ImageManager::TieInterceptorDestroyed,
+                            Rectangle{0, 0, (float)ImageManager::TieInterceptorDestroyed.width, (float)ImageManager::TieInterceptorDestroyed.height},
+                            Rectangle{this->position.first, this->position.second, 48, 48},
+                            Vector2{0, 0}, 0,WHITE);
                 }
             } else {
                 if (this->health > 1) {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{20, 93, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
+                   DrawTexturePro(ImageManager::TieInterceptor,
+                            Rectangle{0, 0, (float)ImageManager::TieInterceptor.width, (float)ImageManager::TieInterceptor.height},
+                            Rectangle{this->position.first, this->position.second, 48, 48},
+                            Vector2{0, 0}, 0,WHITE);
                 } else {
-                    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{125, 93, 15, 12}, 
-                                Rectangle{this->position.first, this->position.second, 30, 30}, 
-                                Vector2{0, 0}, 0, WHITE);
+                   DrawTexturePro(ImageManager::TieInterceptorDamaged,
+                            Rectangle{0, 0, (float)ImageManager::TieInterceptorDamaged.width, (float)ImageManager::TieInterceptorDamaged.height},
+                            Rectangle{this->position.first, this->position.second, 48, 48},
+                            Vector2{0, 0}, 0,WHITE);
                 }
             }
-            break;
+        }break;
     }
 }
 
@@ -84,7 +91,7 @@ void StdEnemy::update(std::pair<float, float> pos, HitBox target) {
     
     if (this->cooldown <= 0) {
         Projectile::projectiles.push_back(Projectile(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 1)));
-        PlaySound(SoundManager::shoot);
+        PlaySound(SoundManager::enemyFighters);
         this->cooldown = GetRandomValue(300, 1380);
     }
 }
