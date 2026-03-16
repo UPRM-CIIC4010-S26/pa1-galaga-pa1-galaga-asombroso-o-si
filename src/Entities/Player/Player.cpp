@@ -2,9 +2,9 @@
 
 void Player::draw() {
     if (HitBox::drawHitbox) this->hitBox.draw();
-    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{0, 0, 17, 18}, 
-                   Rectangle{this->position.first, this->position.second, 30, 30}, 
-                   Vector2{0, 0}, 0, WHITE);
+    DrawTexturePro(ImageManager::XWing, Rectangle{0, 0, (float)ImageManager::XWing.width, (float)ImageManager::XWing.height},
+    Rectangle{this->position.first, this->position.second, 60, 60}, Vector2{0,0}, 0, WHITE
+);
 }
 
 void Player::update() {
@@ -31,15 +31,20 @@ void Player::update() {
 }
 
 void Player::keyInputs() {
-    if (IsKeyDown('A')) this->position.first -= this->speed;
-    if (IsKeyDown('D')) this->position.first += this->speed;
+    if (IsKeyDown('A') || IsKeyDown(KEY_LEFT)) this->position.first -= this->speed;
+    if (IsKeyDown('D') || IsKeyDown(KEY_RIGHT)) this->position.first += this->speed;
     if (IsKeyPressed(KEY_SPACE)) this->attack();
 }
 
 void Player::attack() {
     if (cooldown <= 0) {
         Projectile::projectiles.push_back(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 0));
-        PlaySound(SoundManager::shoot);
-        cooldown = 30;
+        PlaySound(SoundManager::playerShooting);
+        cooldown = 10;
+
+        Projectile::projectiles.push_back(Projectile(position.first + 44, position.second, 0));
+
+        PlaySound(SoundManager::playerShooting);
+        cooldown = 10;
     }
 }
