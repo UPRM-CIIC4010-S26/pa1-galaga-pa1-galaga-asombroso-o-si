@@ -114,8 +114,8 @@ void Program::Draw() {
 
 void Program::ManageEnemyRespawns() {
 
-    int minRespawnCooldown = 300;
-    baseRespawnCooldown = std::max(1080 - score / 500, minRespawnCooldown);
+    int minRespawnCooldown = 20;
+    baseRespawnCooldown = std::max(200 - score / 100, minRespawnCooldown);
     
     delay = std::max(delay - 1, 0);
 
