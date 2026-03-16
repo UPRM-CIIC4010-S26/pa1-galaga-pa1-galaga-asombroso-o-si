@@ -40,11 +40,10 @@ void Player::attack() {
     if (cooldown <= 0) {
         Projectile::projectiles.push_back(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 0));
         PlaySound(SoundManager::playerShooting);
-        cooldown = 10;
+        cooldown = 30;
 
         Projectile::projectiles.push_back(Projectile(position.first + 44, position.second, 0));
-
         PlaySound(SoundManager::playerShooting);
-        cooldown = 10;
+        cooldown = 30;
     }
 }
