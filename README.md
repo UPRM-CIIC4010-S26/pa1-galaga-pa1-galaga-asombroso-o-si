@@ -11,8 +11,8 @@ Don't forget that you must also fill out an evaluation form in Moodle to conside
 
 ## Grading
 
-(STUDENT NUMBER HERE) (STUDENT NAME HERE) (STUDENT EMAIL HERE)
-(STUDENT NUMBER HERE) (STUDENT NAME HERE) (STUDENT EMAIL HERE)
+(802-24-6919) (Chris Y. Martínez Román) (chrisyahel.martinez@upr.edu)
+(802-21-0854) (Adrian R. Sanchez Gonzalez) (adrian.sanchez3@upr.edu)
 
 Any project that doesn't compile will receive a 0.
 
@@ -22,3 +22,16 @@ If a partner has no commits in the repositories, they will receive a 0.
 
 ## Student Notes
 If you have any bonus specs, bonus or any details the TA's should know, you should include it here:
+
+BONUS:
+
+Replaced an enemy type with the Tie Fighter and made the ship a playable X-Wing from Star Wars.
+
+Added Music for Menu, Pause & Gameplay.
+
+Added the respective sounds to enemy Tie Fighters firing.
+
+Added extra proyectile to the player. NOTE: Increased respawn rate to make it more challending due to this addition.
+
+Replaced the Player Shooting Sound with X-Wing's respective sound.
+

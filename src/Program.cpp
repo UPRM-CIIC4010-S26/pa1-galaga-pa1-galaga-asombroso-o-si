@@ -43,9 +43,17 @@ for (int i = 0; i < 30; i++) {
 void Program::Update() {
 
    UpdateMusicStream(SoundManager::menuMusic);
+   UpdateMusicStream(SoundManager::gameplayMusic);
+   UpdateMusicStream(SoundManager::pauseMusic);
 
-    if (startup) {if(!IsMusicStreamPlaying(SoundManager::menuMusic)) {PlayMusicStream(SoundManager::menuMusic);}} 
+    if(startup) {if(!IsMusicStreamPlaying(SoundManager::menuMusic)){PlayMusicStream(SoundManager::menuMusic);}} 
     else{if(IsMusicStreamPlaying(SoundManager::menuMusic)) {StopMusicStream(SoundManager::menuMusic);}}
+
+    if(!startup && !paused && !gameOver){if(!IsMusicStreamPlaying(SoundManager::gameplayMusic)) PlayMusicStream(SoundManager::gameplayMusic);}
+    else{if(IsMusicStreamPlaying(SoundManager::gameplayMusic)){StopMusicStream(SoundManager::gameplayMusic);}}
+
+    if(!startup && paused && !gameOver){if(!IsMusicStreamPlaying(SoundManager::pauseMusic)) PlayMusicStream(SoundManager::pauseMusic);}
+    else{if(IsMusicStreamPlaying(SoundManager::pauseMusic)){StopMusicStream(SoundManager::pauseMusic);}}
 
     if(score >= extraLifeScore){if(lives < maxLives){lives++;} extraLifeScore += 1000;}
     for (Animation& a : Animation::animations) a.update();
@@ -94,7 +102,7 @@ void Program::Draw() {
     if (pauseFrames <= 0 && !gameOver) player->draw();
     for (Animation& a : Animation::animations) a.draw();
 
-    DrawText(TextFormat("Score: %i", score), 10, 10, 24, WHITE);
+    DrawText(TextFormat("Score: %i", score), 10, 102, 24, WHITE);
     DrawText(TextFormat("Lives: %i", lives), 10, 40, 24, WHITE);
 
     for (int i = 0; i < lives; i++) {

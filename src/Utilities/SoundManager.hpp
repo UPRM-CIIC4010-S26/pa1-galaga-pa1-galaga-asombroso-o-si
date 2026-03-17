@@ -23,9 +23,10 @@ class SoundManager {
         shoot = LoadSound("audio/shoot.mp3");
         enemyFighters = LoadSound("audio/TieFighterBlast.mp3");
         playerShooting = LoadSound("audio/XWingBlast.mp3");
-        menuMusic = LoadMusicStream("audio/GatewayGalaxy.mp3");
-        gameplayMusic = LoadMusicStream("audio/GatewayGalaxy.mp3");
-        pauseMusic = LoadMusicStream("audio/GatewayGalaxy.mp3");
+        menuMusic = LoadMusicStream("audio/TheRebelFleet.mp3");
+        gameplayMusic = LoadMusicStream("audio/TheBattleOfYavin.mp3");
+        pauseMusic = LoadMusicStream("audio/BestLeiaDPlan.mp3");
+
     }
 
     static void Unload() {
